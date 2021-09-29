@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ProjectPB</string>
+    <string name="title_activity_detail">activity_detail</string>
+    <string name="desc_resep">Bagaimanakah cara membuat risoles enak? Satu pertanyaan yang sering diajukan yang hobi masak. Kerap kali kita juga tidak ingin berepot-repot sehingga jadinya beli. Padahal membuat risoles sebetulnya tidak sulit dan bahkan kamu bisa menikmati isian yang unik seperti salted egg! \n\n
+
+Melengkapi banyak resep kudapan yang sudah pernah saya bagi di Masak Apa Hari Ini, risoles salted egg adalah pilihan kekinian. Sebuah pilihan seru yang bisa kamu coba untuk sajikan saat kumpul-kumpul seru akhir tahun bersama keluarga ataupun teman-teman. Tersaji hangat dan renyah, risoles ini juga layak dipadukan dengan saus cocolan salted egg. \n\n
+
+Sajikan juga berbagai camilan lainnya seperti jalangkote khas Makassar ataupun ravioli isi ayam. Semarakkan perayaan pergantian tahun kamu!</string>
 </resources>

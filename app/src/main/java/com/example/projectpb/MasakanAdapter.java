@@ -3,6 +3,7 @@ package com.example.projectpb;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,25 +42,19 @@ public class MasakanAdapter extends RecyclerView.Adapter<MasakanAdapter.ViewHold
         return mMasakanData.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        // Member Variables for the TextViews
         private TextView mTitleText;
         private TextView mInfoText;
         private ImageView mMasakanImage;
 
-        /**
-         * Constructor for the ViewHolder, used in onCreateViewHolder().
-         *
-         * @param itemView The rootview of the list_item.xml layout file.
-         */
+
         ViewHolder(View itemView) {
             super(itemView);
-
-            // Initialize the views.
             mTitleText = itemView.findViewById(R.id.title);
             mInfoText = itemView.findViewById(R.id.subTitle);
             mMasakanImage = itemView.findViewById(R.id.gbr_makanan);
+            itemView.setOnClickListener(this);
         }
 
         void bindTo(Masakan currentMasakan){
@@ -67,7 +62,17 @@ public class MasakanAdapter extends RecyclerView.Adapter<MasakanAdapter.ViewHold
             mTitleText.setText(currentMasakan.getJudul());
             mInfoText.setText(currentMasakan.getInfo());
             Glide.with(mContext).load(currentMasakan.getImageResource()).into(mMasakanImage);
+        }
 
+
+        @Override
+        public void onClick(View view) {
+            Masakan currentMasakan = mMasakanData.get(getAdapterPosition());
+            Intent detailIntent = new Intent(mContext, DetailActivity.class);
+            detailIntent.putExtra("Judul", currentMasakan.getJudul());
+            detailIntent.putExtra("image_resource",
+                    currentMasakan.getImageResource());
+            mContext.startActivity(detailIntent);
         }
     }
 

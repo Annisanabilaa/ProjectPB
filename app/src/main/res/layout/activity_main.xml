@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/activity_main"
@@ -10,109 +12,26 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputEditText"
-        android:layout_width="0dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="8dp"
-        android:hint="Cari Resep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.74"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="137dp"
-        android:layout_height="121dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView13"
-        app:srcCompat="@drawable/martabak" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="130dp"
-        android:layout_height="95dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.821"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView13"
-        app:srcCompat="@drawable/pecel" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="136dp"
-        android:layout_height="99dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.149"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:srcCompat="@drawable/pempek" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="145dp"
-        android:layout_height="96dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.834"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:srcCompat="@drawable/sate" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="136dp"
-        android:layout_height="120dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.131"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10"
-        app:srcCompat="@drawable/soto" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
+    </RelativeLayout>
 
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="138dp"
-        android:layout_height="113dp"
-        android:layout_marginTop="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:srcCompat="@drawable/nasi_bakar" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="138dp"
-        android:layout_height="123dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.838"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/nasi_uduk" />
-
-    <ImageView
-        android:id="@+id/imageView13"
-        android:layout_width="227dp"
-        android:layout_height="127dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
-        app:srcCompat="@drawable/jumbotron" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="149dp"
-        android:layout_height="138dp"
-        android:layout_marginEnd="28dp"
-        android:onClick="show_detail"
-        app:layout_constraintBottom_toTopOf="@+id/imageView11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        app:layout_constraintVertical_bias="0.723"
-        app:srcCompat="@drawable/risoles" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

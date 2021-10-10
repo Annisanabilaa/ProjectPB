@@ -1,9 +1,54 @@
 <resources>
     <string name="app_name">ProjectPB</string>
+    <string name="title_placeholder">Title</string>
+    <string name="news_placeholder">News</string>
+    <string name="sports_info_placeholder">Here is some news</string>
     <string name="title_activity_detail">activity_detail</string>
     <string name="desc_resep">Bagaimanakah cara membuat risoles enak? Satu pertanyaan yang sering diajukan yang hobi masak. Kerap kali kita juga tidak ingin berepot-repot sehingga jadinya beli. Padahal membuat risoles sebetulnya tidak sulit dan bahkan kamu bisa menikmati isian yang unik seperti salted egg! \n\n
 
 Melengkapi banyak resep kudapan yang sudah pernah saya bagi di Masak Apa Hari Ini, risoles salted egg adalah pilihan kekinian. Sebuah pilihan seru yang bisa kamu coba untuk sajikan saat kumpul-kumpul seru akhir tahun bersama keluarga ataupun teman-teman. Tersaji hangat dan renyah, risoles ini juga layak dipadukan dengan saus cocolan salted egg. \n\n
 
 Sajikan juga berbagai camilan lainnya seperti jalangkote khas Makassar ataupun ravioli isi ayam. Semarakkan perayaan pergantian tahun kamu!</string>
+    <string name="search">Cari Resep</string>
+
+    <array name="judul_masakan">
+        <item>"Lontong"</item>
+        <item>"Martabak"</item>
+        <item>"Nasi Bakar"</item>
+        <item>"Nasi Uduk"</item>
+        <item>"Opor"</item>
+        <item>"Pecel"</item>
+        <item>"Pempek"</item>
+        <item>"Risoles"</item>
+        <item>"Sate"</item>
+        <item>"Soto"</item>
+    </array>
+
+    <array name="info_masakan">
+        <item>"ini makanan"</item>
+        <item>"ini makanan"</item>
+        <item>"ini makanan"</item>
+        <item>"ini makanan"</item>
+        <item>"ini makanan"</item>
+        <item>"ini makanan"</item>
+        <item>"ini makanan"</item>
+        <item>"ini makanan"</item>
+        <item>"ini makanan"</item>
+        <item>"ini makanan"</item>
+    </array>
+
+    <array name="gbr_makanan">
+        <item>@drawable/lontong</item>
+        <item>@drawable/martabak</item>
+        <item>@drawable/nasi_bakar</item>
+        <item>@drawable/nasi_uduk</item>
+        <item>@drawable/opor</item>
+        <item>@drawable/pecel</item>
+        <item>@drawable/pempek</item>
+        <item>@drawable/risoles</item>
+        <item>@drawable/sate</item>
+        <item>@drawable/soto</item>
+    </array>
+
+
 </resources>

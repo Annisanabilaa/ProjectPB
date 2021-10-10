@@ -39,11 +39,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //public void show_detail(View view) {
-     //   Intent intent =
-       //         new Intent(MainActivity.this, DetailActivity.class);
-     //   startActivity(intent);
-   // }
+
+    public void show_detail(View view) {
+        Intent intent =
+                new Intent(MainActivity.this, DetailActivity.class);
+        startActivity(intent);
+    }
 
     private void initializeData() {
         // Get the resources from the XML file.
@@ -65,9 +66,11 @@ public class MainActivity extends AppCompatActivity {
                     masakanImageResources.getResourceId(i,0)));
         }
 
+
         // Notify the adapter of the change.
         mAdapter.notifyDataSetChanged();
-        masakanImageResources.recycle();
-    }
 
+        masakanImageResources.recycle();
+
+    }
 }

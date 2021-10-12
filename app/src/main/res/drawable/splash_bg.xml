@@ -4,10 +4,10 @@
 
         <item android:drawable="@color/white"/>
 
-        <item android:gravity="center" android:width="200dp" android:height="200dp">
+        <item android:gravity="center" android:width="280dp" android:height="280dp">
             <bitmap
                 android:gravity="fill_horizontal|fill_vertical"
-                android:src="@drawable/hitobajlkseeivcjy22b"/>
+                android:src="@drawable/yummypedialogo"/>
         </item>
 
     </layer-list>

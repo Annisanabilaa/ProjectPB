@@ -27,12 +27,5 @@
         android:text="@string/news_placeholder"
         android:padding="8dp"
         style="@style/TextAppearance.AppCompat.Subhead" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/subTitle"
-        android:layout_below="@id/newsTitle"
-        android:text="@string/sports_info_placeholder"
-        android:padding="8dp"
-        style="@style/TextAppearance.AppCompat.Subhead" />
+
 </RelativeLayout>

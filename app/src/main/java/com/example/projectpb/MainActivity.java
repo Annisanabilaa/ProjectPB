@@ -1,6 +1,10 @@
 package com.example.projectpb;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,7 +15,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     private RecyclerView mRecyclerView;
     private ArrayList<Masakan> mMasakanData;
     private MasakanAdapter mAdapter;
@@ -48,8 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeData() {
         // Get the resources from the XML file.
-        String[] masakanList = getResources()
-                .getStringArray(R.array.judul_masakan);
+        String[] masakanList = Masakan.getData();
         String[] masakanInfo = getResources()
                 .getStringArray(R.array.info_masakan);
 

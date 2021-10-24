@@ -10,8 +10,6 @@ public class Result {
     public String times;
     public String portion;
     public String dificulty;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
 
     public String getTitle() {
         return title;
@@ -61,11 +59,4 @@ public class Result {
         this.dificulty = dificulty;
     }
 
-    public Map<String, Object> getAdditionalProperties(){
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperties(String title, Object value){
-        this.additionalProperties.put(title, value);
-    }
 }

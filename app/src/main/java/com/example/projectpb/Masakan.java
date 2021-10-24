@@ -1,5 +1,5 @@
 package com.example.projectpb;
-
+/*
 import com.example.projectpb.data.Root;
 import com.example.projectpb.rest.RestApi;
 
@@ -18,7 +18,7 @@ public class Masakan{
     private String portion;
     private String dificulty;
 
-    Masakan(String title, String key, String thumb, String times, String portion, String dificulty){
+    public Masakan(String title, String key, String thumb, String times, String portion, String dificulty){
         this.title=title;
         this.thumb=thumb;
         this.key=key;
@@ -56,3 +56,5 @@ public class Masakan{
     }
 
 }
+
+*/

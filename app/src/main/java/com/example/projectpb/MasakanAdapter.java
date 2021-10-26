@@ -17,12 +17,13 @@ import com.example.projectpb.data.Result;
 import java.util.ArrayList;
 
 public class MasakanAdapter extends RecyclerView.Adapter<MasakanAdapter.ViewHolder> {
-    private ArrayList<Result>mData=new ArrayList<>();
+    private final ArrayList<Result>mData=new ArrayList<>();
     private OnItemClickCallback onItemClickCallback;
 
     public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback;
     }
+
     @SuppressLint("NotifyDataSetChanged")
     public void setData(ArrayList<Result> items) {
         mData.clear();
@@ -40,12 +41,7 @@ public class MasakanAdapter extends RecyclerView.Adapter<MasakanAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull MasakanAdapter.ViewHolder holder, int position) {
         holder.bind(mData.get(position));
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onItemClickCallback.onItemClicked(mData.get(holder.getAdapterPosition()));
-            }
-        });
+        holder.itemView.setOnClickListener(v -> onItemClickCallback.onItemClicked(mData.get(holder.getBindingAdapterPosition())));
     }
 
     @Override
@@ -53,7 +49,7 @@ public class MasakanAdapter extends RecyclerView.Adapter<MasakanAdapter.ViewHold
         return mData.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder{
         TextView mTitleText;
         ImageView mMasakanImage;
 
@@ -66,7 +62,7 @@ public class MasakanAdapter extends RecyclerView.Adapter<MasakanAdapter.ViewHold
         void bind(Result result){
             Glide.with(itemView.getContext())
                     .load(result.getThumb())
-                    .apply(new RequestOptions().override(55, 55))
+                    .apply(new RequestOptions().override(1920, 1920))
                     .into(mMasakanImage);
             mTitleText.setText(result.getTitle());
         }

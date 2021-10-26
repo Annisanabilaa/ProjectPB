@@ -6,37 +6,81 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/gbr_makanan"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/title_activity_detail"
-        android:onClick="showDetail"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="0dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:lineSpacingExtra="4sp"
-        android:padding="8dp"
-        android:text="@string/title_placeholder"
-        android:textAlignment="viewStart"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:onClick="showDetail"
-        app:layout_constraintBottom_toBottomOf="@+id/gbr_makanan"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/gbr_makanan"
-        app:layout_constraintTop_toTopOf="@+id/gbr_makanan" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/gbr_makanan"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="28dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/title_activity_detail"
+            android:fadingEdge="horizontal"
+            android:onClick="showDetail"
+            android:radius="15dp"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/durasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="238dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/durasi_1_jam"
+            android:textColor="#919191"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/kesulitan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="238dp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/tingkat_kesulitan_medium"
+            android:textColor="#919191"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="176dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="#36000000"
+            android:fontFamily="@font/montserrat_bold"
+            android:lineSpacingExtra="4sp"
+            android:onClick="showDetail"
+            android:padding="8dp"
+            android:shadowColor="#A4000000"
+            android:shadowRadius="2.0"
+            android:text="@string/title_placeholder"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

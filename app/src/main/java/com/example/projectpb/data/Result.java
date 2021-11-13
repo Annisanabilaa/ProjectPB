@@ -1,8 +1,5 @@
 package com.example.projectpb.data;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Result {
     public String title;
     public String thumb;

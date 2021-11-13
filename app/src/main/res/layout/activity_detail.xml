@@ -21,7 +21,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/title_activity_detail"
             android:scaleType="centerCrop"
-            android:src="@drawable/risoles" />
+            />
 
         <TextView
             android:id="@+id/titleDetail"
@@ -37,7 +37,6 @@
             android:layout_marginBottom="4dp"
             android:layout_toEndOf="@+id/gbr_makananDetail"
             android:padding="0dp"
-            android:text="@string/title_example"
             android:textStyle="bold" />
 
         <TextView
@@ -65,7 +64,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:padding="4dp"
-            android:text="@string/desc_resep" />
+            android:padding="4dp" />
     </RelativeLayout>
 </ScrollView>

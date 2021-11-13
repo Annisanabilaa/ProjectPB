@@ -22,7 +22,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity
+    implements MasakanAdapter.OnItemClickCallback{
     private MasakanAdapter mAdapter;
 
     @SuppressLint("NotifyDataSetChanged")
@@ -32,41 +33,49 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter=new MasakanAdapter();
+        mAdapter = new MasakanAdapter();
         mAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(mAdapter);
         getResult();
+        mAdapter.setOnItemClickCallback(this::onItemClicked);
     }
-    private void getResult(){
-        final ArrayList<Result>listResult=new ArrayList<>();
-        String baseURL="https://masak-apa-tomorisakura.vercel.app/api/recipes/";
+
+    private void getResult() {
+        final ArrayList<Result> listResult = new ArrayList<>();
+        String baseURL = "https://masak-apa-tomorisakura.vercel.app/api/recipes/1";
         AndroidNetworking.get(baseURL).setPriority(Priority.MEDIUM).build().getAsJSONObject(new JSONObjectRequestListener() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("Response", response.toString());
-                try{
-                    JSONArray jsonArray=response.getJSONArray("results");
-                    for (int i=0;i<jsonArray.length();i++){
+                try {
+                    JSONArray jsonArray = response.getJSONArray("results");
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject result = jsonArray.getJSONObject(i);
-                        Result itemResult=new Result();
+                        Result itemResult = new Result();
                         itemResult.setTitle(result.getString("title"));
                         itemResult.setThumb(result.getString("thumb"));
+                        itemResult.setKey(result.getString("key"));
                         listResult.add(itemResult);
                     }
                     mAdapter.setData(listResult);
-                } catch (JSONException e){
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onError(ANError anError) {
-                Log.d("onFailure",anError.getMessage());
+                Log.d("onFailure", anError.getMessage());
             }
         });
     }
 
-    public void showDetail(View view){
-        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-        startActivity(intent);
+    @Override
+    public void onItemClicked(Result data) {
+            String key = data.getKey();
+            Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+            intent.putExtra("key", key);
+            startActivity(intent);
     }
+
 }

@@ -14,6 +14,8 @@ Sajikan juga berbagai camilan lainnya seperti jalangkote khas Makassar ataupun r
     <string name="info_example">Tingkat Kesulitan : Mudah, Estimasi Waktu Pengerjaan 1 Jam</string>
     <string name="durasi_1_jam">Durasi : 1 Jam</string>
     <string name="tingkat_kesulitan_medium">Tingkat Kesulitan : Medium</string>
+    <string name="no_search_term">Resep Tidak Ditemukan</string>
+    <string name="no_network">Tidak Ada Jaringan</string>
 
     <array name="judul_masakan">
         <item>"Lontong"</item>

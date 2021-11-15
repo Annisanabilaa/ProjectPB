@@ -16,6 +16,8 @@ import com.example.projectpb.data.Result;
 
 import java.util.ArrayList;
 
+import butterknife.ButterKnife;
+
 public class MasakanAdapter extends RecyclerView.Adapter<MasakanAdapter.ViewHolder> {
     private final ArrayList<Result>mData=new ArrayList<>();
     private OnItemClickCallback onItemClickCallback;
@@ -52,11 +54,15 @@ public class MasakanAdapter extends RecyclerView.Adapter<MasakanAdapter.ViewHold
     static class ViewHolder extends RecyclerView.ViewHolder{
         TextView mTitleText;
         ImageView mMasakanImage;
+        String mKey;
 
         public ViewHolder(View itemView) {
             super(itemView);
             mTitleText = itemView.findViewById(R.id.title);
             mMasakanImage = itemView.findViewById(R.id.gbr_makanan);
+            ButterKnife.bind(this,itemView);
+
+            itemView.setOnClickListener(v -> getBindingAdapterPosition());
         }
 
         void bind(Result result){
@@ -65,6 +71,7 @@ public class MasakanAdapter extends RecyclerView.Adapter<MasakanAdapter.ViewHold
                     .apply(new RequestOptions().override(1920, 1920))
                     .into(mMasakanImage);
             mTitleText.setText(result.getTitle());
+            mKey=result.getKey();
         }
     }
     public interface OnItemClickCallback {

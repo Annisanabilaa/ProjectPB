@@ -33,7 +33,6 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/title_activity_detail"
             android:fadingEdge="horizontal"
-            android:onClick="showDetail"
             android:radius="15dp"
             android:scaleType="fitXY" />
 
@@ -70,7 +69,6 @@
             android:background="#36000000"
             android:fontFamily="@font/montserrat_bold"
             android:lineSpacingExtra="4sp"
-            android:onClick="showDetail"
             android:padding="8dp"
             android:shadowColor="#A4000000"
             android:shadowRadius="2.0"

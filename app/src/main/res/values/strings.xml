@@ -11,9 +11,12 @@ Melengkapi banyak resep kudapan yang sudah pernah saya bagi di Masak Apa Hari In
 Sajikan juga berbagai camilan lainnya seperti jalangkote khas Makassar ataupun ravioli isi ayam. Semarakkan perayaan pergantian tahun kamu!</string>
     <string name="search">Cari Resep</string>
     <string name="title_example">Resep Risoles, Murah Meriah dan Cocok untuk Satu Keluarga</string>
-    <string name="info_example">Tingkat Kesulitan : Mudah, Estimasi Waktu Pengerjaan 1 Jam</string>
+    <string name="info_example">Durasi : 1 Jam</string>
     <string name="durasi_1_jam">Durasi : 1 Jam</string>
     <string name="tingkat_kesulitan_medium">Tingkat Kesulitan : Medium</string>
+    <string name="kesulitanDetail">Tingkat Kesulitan : Medium</string>
+    <string name="ingredientTitletext">Bahan-Bahan</string>
+    <string name="porsiDetal">Porsi : Sedang</string>
 
     <array name="judul_masakan">
         <item>"Lontong"</item>

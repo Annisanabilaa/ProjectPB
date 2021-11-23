@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity
                         Result itemResult = new Result();
                         itemResult.setTitle(result.getString("title"));
                         itemResult.setThumb(result.getString("thumb"));
+                        itemResult.setTimes(result.getString("times"));
+                        itemResult.setDificulty(result.getString("dificulty"));
                         itemResult.setKey(result.getString("key"));
                         listResult.add(itemResult);
                     }
@@ -73,8 +75,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onItemClicked(Result data) {
             String key = data.getKey();
+            String thumb = data.getThumb();
             Intent intent = new Intent(MainActivity.this, DetailActivity.class);
             intent.putExtra("key", key);
+            intent.putExtra("thumb", thumb);
             startActivity(intent);
     }
 

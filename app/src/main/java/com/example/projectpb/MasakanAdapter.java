@@ -54,12 +54,16 @@ public class MasakanAdapter extends RecyclerView.Adapter<MasakanAdapter.ViewHold
     static class ViewHolder extends RecyclerView.ViewHolder{
         TextView mTitleText;
         ImageView mMasakanImage;
+        TextView mDurasi;
+        TextView mKesulitan;
         String mKey;
 
         public ViewHolder(View itemView) {
             super(itemView);
             mTitleText = itemView.findViewById(R.id.title);
             mMasakanImage = itemView.findViewById(R.id.gbr_makanan);
+            mDurasi = itemView.findViewById(R.id.durasi);
+            mKesulitan=itemView.findViewById(R.id.kesulitan);
             ButterKnife.bind(this,itemView);
 
             itemView.setOnClickListener(v -> getBindingAdapterPosition());
@@ -71,6 +75,10 @@ public class MasakanAdapter extends RecyclerView.Adapter<MasakanAdapter.ViewHold
                     .apply(new RequestOptions().override(1920, 1920))
                     .into(mMasakanImage);
             mTitleText.setText(result.getTitle());
+            String durasi="Durasi : "+result.getTimes();
+            String kesulitan="Kesulitan : "+result.getDificulty();
+            mDurasi.setText(durasi);
+            mKesulitan.setText(kesulitan);
             mKey=result.getKey();
         }
     }

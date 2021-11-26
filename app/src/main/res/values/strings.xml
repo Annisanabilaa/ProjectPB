@@ -17,6 +17,7 @@ Sajikan juga berbagai camilan lainnya seperti jalangkote khas Makassar ataupun r
     <string name="kesulitanDetail">Tingkat Kesulitan : Medium</string>
     <string name="ingredientTitletext">Bahan-Bahan</string>
     <string name="porsiDetal">Porsi : Sedang</string>
+    <string name="langkahTitleDetail">Langkah-Langkah</string>
 
     <array name="judul_masakan">
         <item>"Lontong"</item>

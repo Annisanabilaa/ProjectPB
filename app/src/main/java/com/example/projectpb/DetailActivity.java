@@ -22,15 +22,19 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import hakobastvatsatryan.DropdownTextView;
+
 public class DetailActivity extends AppCompatActivity{
     private String key;
     TextView judul;
     ImageView gambar;
-    TextView desc;
     TextView bahan;
     TextView kesulitanDetail;
     TextView durasiDetail;
     TextView porsiDetail;
+    TextView langkah;
+    String loading="Loading...";
+    DropdownTextView desc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +59,17 @@ public class DetailActivity extends AppCompatActivity{
         gambar=findViewById(R.id.gbr_makananDetail);
         Glide.with(this).load(thumb).override(1080,1080).into(gambar);
         desc=findViewById(R.id.subTitleDetail);
+        desc.setTitleText("Deskripsi Masakan");
+        desc.setContentText(loading);
+        desc.expand(true);
         bahan= findViewById(R.id.ingredientDetail);
+        bahan.setText(loading);
+        langkah= findViewById(R.id.langkahDetail);
+        langkah.setText(loading);
         kesulitanDetail=findViewById(R.id.kesulitanDetail);
         durasiDetail=findViewById(R.id.durasiDetail);
         porsiDetail=findViewById(R.id.porsiDetail);
+
     }
     private void getDetailResult() {
         String baseURL = "https://masak-apa-tomorisakura.vercel.app/api/recipe/"+key+"/";
@@ -70,13 +81,14 @@ public class DetailActivity extends AppCompatActivity{
                 try {
                     JSONObject result=response.getJSONObject("results");
                     judul.setText(result.getString("title"));
-                    desc.setText(result.getString("desc"));
+                    desc.setContentText(result.getString("desc"));
                     String mKesulitan="Tingkat Kesulitan : "+result.getString("dificulty");
                     String mDurasi="Durasi : "+result.getString("times");
                     String mPorsi="Porsi : "+result.getString("servings");
                     durasiDetail.setText(mDurasi);
                     kesulitanDetail.setText(mKesulitan);
                     porsiDetail.setText(mPorsi);
+                    //bahan-bahan
                     ArrayList<String> listdata = new ArrayList<>();
                     JSONArray ingr;
                     ingr=result.getJSONArray("ingredient");
@@ -87,7 +99,19 @@ public class DetailActivity extends AppCompatActivity{
                     for(int i=0;i<listdata.size();i++){
                         sb.append("\u2022 "+listdata.get(i)+"\n");
                     }
-                   bahan.setText(sb.toString());
+                    bahan.setText(sb.toString());
+                    //langkah langkah
+                    ArrayList<String>listStep=new ArrayList<>();
+                    JSONArray step;
+                    step=result.getJSONArray("step");
+                    for(int i=0;i<step.length();i++){
+                        listStep.add(step.getString(i));
+                    }
+                    StringBuilder sb2=new StringBuilder();
+                    for(int i=0;i<listStep.size();i++){
+                        sb2.append(listStep.get(i)+"\n"+"\n");
+                    }
+                    langkah.setText(sb2.toString());
                 }
                 catch (JSONException e) {
                     e.printStackTrace();

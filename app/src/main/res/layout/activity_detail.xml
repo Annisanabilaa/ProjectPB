@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView2"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -30,7 +31,7 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:padding="0dp"
-            android:justificationMode="inter_word"
+            android:justificationMode="none"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/gbr_makananDetail"
             app:layout_constraintEnd_toEndOf="parent"
@@ -46,8 +47,9 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat"
             android:padding="0dp"
+            android:background="@drawable/rounded_corner"
             android:text="@string/info_example"
-            android:textColor="#919191"
+            android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gbr_makananDetail" />
@@ -59,10 +61,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_corner"
             android:fontFamily="@font/montserrat"
             android:padding="0dp"
             android:text="@string/kesulitanDetail"
-            android:textColor="#919191"
+            android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/porsiDetail"
             app:layout_constraintStart_toEndOf="@+id/durasiDetail"
@@ -75,61 +78,91 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat"
+            android:background="@drawable/rounded_corner"
             android:padding="0dp"
             android:text="@string/porsiDetal"
-            android:textColor="#919191"
+            android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/kesulitanDetail" />
 
-        <TextView
+        <hakobastvatsatryan.DropdownTextView
             android:id="@+id/subTitleDetail"
-            style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/montserrat"
-            android:justificationMode="inter_word"
-            android:lineSpacingExtra="5dp"
-            android:padding="4dp"
+            app:arrow_drawable="@drawable/ic_arrow"
+            app:content_font="@font/montserrat"
+            app:content_padding="@dimen/content_padding_medium"
+            app:content_text_size="@dimen/medium"
+            app:expand_duration="@integer/material_motion_duration_medium_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/durasiDetail" />
-
+            app:layout_constraintTop_toBottomOf="@+id/durasiDetail"
+            app:title_font="@font/montserrat_bold"
+            app:title_text_color="@color/black"
+            app:title_text_size="@dimen/large"
+            />
 
         <TextView
             android:id="@+id/ingredientTitle"
             style="@style/TextAppearance.AppCompat.Medium"
-            android:fontFamily="@font/montserrat_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/montserrat_bold"
             android:text="@string/ingredientTitletext"
-            app:layout_constraintStart_toStartOf="parent"
             android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/subTitleDetail" />
 
         <TextView
             android:id="@+id/ingredientDetail"
+            style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="6dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:textColor="#919191"
-            android:lineSpacingExtra="8dp"
             android:fontFamily="@font/montserrat"
-            style="@style/TextAppearance.AppCompat.Subhead"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:lineSpacingExtra="8dp"
+            android:textColor="#919191"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ingredientTitle"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/ingredientTitle" />
+
+        <TextView
+            android:id="@+id/langkahTitleDetail"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/langkahTitleDetail"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ingredientDetail" />
+
+        <TextView
+            android:id="@+id/langkahDetail"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:fontFamily="@font/montserrat"
+            android:lineSpacingExtra="8dp"
+            android:textColor="#919191"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/langkahTitleDetail" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 

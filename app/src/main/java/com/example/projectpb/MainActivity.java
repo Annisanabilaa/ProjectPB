@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements MasakanAdapter.On
         return super.onCreateOptionsMenu(menu);
     }
 
+
     private void getResult() {
         final ArrayList<Result> listResult = new ArrayList<>();
         String baseURL = "https://masak-apa-tomorisakura.vercel.app/api/recipes/1";

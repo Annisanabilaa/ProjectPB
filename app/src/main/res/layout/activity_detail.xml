@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/Silk">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -12,13 +13,13 @@
 
         <ImageView
             android:id="@+id/gbr_makananDetail"
-            android:layout_width="109dp"
-            android:layout_height="96dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="0dp"
+            android:layout_height="230dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/title_activity_detail"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,45 +29,50 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:padding="0dp"
             android:justificationMode="none"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/gbr_makananDetail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/gbr_makananDetail"
-            app:layout_constraintTop_toTopOf="@+id/gbr_makananDetail" />
-
-        <TextView
-            android:id="@+id/durasiDetail"
-            style="@style/TextAppearance.AppCompat.Subhead"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/montserrat"
             android:padding="0dp"
-            android:background="@drawable/rounded_corner"
-            android:text="@string/info_example"
-            android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textAlignment="center"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gbr_makananDetail" />
 
         <TextView
+            android:id="@+id/durasiDetail"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            android:layout_width="90dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded_corner"
+            android:fontFamily="@font/montserrat"
+            android:padding="0dp"
+            android:text="@string/info_example"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleDetail" />
+
+        <TextView
             android:id="@+id/kesulitanDetail"
             style="@style/TextAppearance.AppCompat.Subhead"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="167dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
             android:background="@drawable/rounded_corner"
             android:fontFamily="@font/montserrat"
             android:padding="0dp"
             android:text="@string/kesulitanDetail"
+            android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="11sp"
             app:layout_constraintEnd_toStartOf="@+id/porsiDetail"
             app:layout_constraintStart_toEndOf="@+id/durasiDetail"
             app:layout_constraintTop_toTopOf="@+id/durasiDetail" />
@@ -74,15 +80,16 @@
         <TextView
             android:id="@+id/porsiDetail"
             style="@style/TextAppearance.AppCompat.Subhead"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/montserrat"
+            android:layout_width="92dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="12dp"
             android:background="@drawable/rounded_corner"
+            android:fontFamily="@font/montserrat"
             android:padding="0dp"
             android:text="@string/porsiDetal"
+            android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/kesulitanDetail" />
 
@@ -91,7 +98,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             app:arrow_drawable="@drawable/ic_arrow"
             app:content_font="@font/montserrat"
@@ -99,12 +106,12 @@
             app:content_text_size="@dimen/medium"
             app:expand_duration="@integer/material_motion_duration_medium_2"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/durasiDetail"
             app:title_font="@font/montserrat_bold"
             app:title_text_color="@color/black"
-            app:title_text_size="@dimen/large"
-            />
+            app:title_text_size="@dimen/large" />
 
         <TextView
             android:id="@+id/ingredientTitle"
@@ -112,7 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/ingredientTitletext"
             android:textColor="@color/black"
@@ -125,13 +132,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat"
             android:lineSpacingExtra="8dp"
             android:textColor="#919191"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ingredientTitle" />
 
@@ -151,15 +158,16 @@
         <TextView
             android:id="@+id/langkahDetail"
             style="@style/TextAppearance.AppCompat.Subhead"
-            android:fontFamily="@font/montserrat"
-            android:lineSpacingExtra="8dp"
-            android:textColor="#919191"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:fontFamily="@font/montserrat"
+            android:lineSpacingExtra="8dp"
+            android:textColor="#919191"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/langkahTitleDetail" />
 

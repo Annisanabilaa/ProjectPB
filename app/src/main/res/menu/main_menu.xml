@@ -7,7 +7,7 @@
         android:id="@+id/search"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="@string/search"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
     <group
@@ -16,12 +16,13 @@
         app:showAsAction="never"
         app:actionViewClass="android.widget.Spinner"/>
     <item
-        android:id="@+id/darkmode"
+        android:id="@+id/night_mode"
         app:showAsAction="never"
-        android:title="@string/darkmode"/>
+        android:title="@string/night_mode"/>
     <item
         android:id="@+id/riwayat"
         app:showAsAction="never"
-        android:title="@string/riwayat"/>
+        android:title="@string/riwayat"
+        />
 
 </menu>

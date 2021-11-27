@@ -7,6 +7,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
@@ -18,11 +24,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity
     implements MasakanAdapter.OnItemClickCallback{
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
+        int nightMode = AppCompatDelegate.getDefaultNightMode();
         MenuItem menuItem = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setQueryHint("Cari Resep...");
@@ -77,7 +79,13 @@ public class MainActivity extends AppCompatActivity
                 return false;
             }
         });
-        return super.onCreateOptionsMenu(menu);
+//        return super.onCreateOptionsMenu(menu);
+        if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
+            menu.findItem(R.id.night_mode).setTitle(R.string.day_mode);
+        } else {
+            menu.findItem(R.id.night_mode).setTitle(R.string.night_mode);
+        }
+        return true;
     }
 
     private void getResult() {
@@ -155,6 +163,39 @@ public class MainActivity extends AppCompatActivity
             intent.putExtra("key", key);
             intent.putExtra("thumb", thumb);
             startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Check if the correct item was clicked.
+        switch (item.getItemId()) {
+            case R.id.riwayat:
+                Intent intent = new Intent(MainActivity.this, RiwayatActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.night_mode:
+                if (item.getItemId() == R.id.night_mode) {
+                    // Get the night mode state of the app.
+                    int nightMode = AppCompatDelegate.getDefaultNightMode();
+                    // Set the theme mode for the restarted activity.
+                    if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
+                        AppCompatDelegate.setDefaultNightMode
+                                (AppCompatDelegate.MODE_NIGHT_NO);
+
+                    } else {
+                        AppCompatDelegate.setDefaultNightMode
+                                (AppCompatDelegate.MODE_NIGHT_YES);
+//                        DropdownTextView.Builder desc;
+//                        desc = new DropdownTextView.Builder(this);
+//                        desc.setTitleTextColorRes(R.color.white);
+                    }
+                    // Recreate the activity for the theme change to take effect.
+                    recreate();
+                }
+                return true;
+        }
+
+        return false;
     }
 
 

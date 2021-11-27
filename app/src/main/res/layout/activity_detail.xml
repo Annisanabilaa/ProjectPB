@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/Silk">
+    android:layout_height="match_parent">
+<!--    android:background="@color/Silk"-->
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -110,25 +111,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/durasiDetail"
             app:title_font="@font/montserrat_bold"
-            app:title_text_color="@color/black"
-            app:title_text_size="@dimen/large" />
+
+            app:title_text_size="@dimen/large"/>
 
         <TextView
             android:id="@+id/ingredientTitle"
-            style="@style/TextAppearance.AppCompat.Medium"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/ingredientTitletext"
-            android:textColor="@color/black"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/subTitleDetail" />
 
         <TextView
             android:id="@+id/ingredientDetail"
-            style="@style/TextAppearance.AppCompat.Subhead"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -144,20 +145,20 @@
 
         <TextView
             android:id="@+id/langkahTitleDetail"
-            style="@style/TextAppearance.AppCompat.Medium"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/langkahTitleDetail"
-            android:textColor="@color/black"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ingredientDetail" />
 
         <TextView
             android:id="@+id/langkahDetail"
-            style="@style/TextAppearance.AppCompat.Subhead"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

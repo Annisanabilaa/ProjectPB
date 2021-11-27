@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.projectpb.toolbar.MainActivity">
     <item
         android:id="@+id/search"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="@string/search"
         app:showAsAction="ifRoom"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+    <group
+        android:id="@+id/optionMenu"
+        android:icon="@drawable/ic_baseline_more_vert_24"
+        app:showAsAction="never"
+        app:actionViewClass="android.widget.Spinner"/>
+    <item
+        android:id="@+id/darkmode"
+        app:showAsAction="never"
+        android:title="@string/darkmode"/>
+    <item
+        android:id="@+id/riwayat"
+        app:showAsAction="never"
+        android:title="@string/riwayat"/>
+
 </menu>

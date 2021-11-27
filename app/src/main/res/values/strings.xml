@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProjectPB</string>
+    <string name="app_name">YummyPedia</string>
     <string name="title_placeholder">Title</string>
     <string name="news_placeholder">News</string>
     <string name="sports_info_placeholder">Here is some news</string>
@@ -18,6 +18,9 @@ Sajikan juga berbagai camilan lainnya seperti jalangkote khas Makassar ataupun r
     <string name="ingredientTitletext">Bahan-Bahan</string>
     <string name="porsiDetal">Porsi : Sedang</string>
     <string name="langkahTitleDetail">Langkah-Langkah</string>
+    <string name="option">option</string>
+    <string name="darkmode">DarkMode</string>
+    <string name="riwayat">Riwayat</string>
 
     <array name="judul_masakan">
         <item>"Lontong"</item>

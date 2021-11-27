@@ -28,7 +28,7 @@ public class MasakanAdapter extends RecyclerView.Adapter<MasakanAdapter.ViewHold
 
     @SuppressLint("NotifyDataSetChanged")
     public void setData(ArrayList<Result> items) {
-        mData.clear();
+        //mData.clear();
         mData.addAll(items);
         notifyDataSetChanged();
     }

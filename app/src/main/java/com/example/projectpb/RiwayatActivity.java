@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,42 +29,35 @@ public class RiwayatActivity extends AppCompatActivity implements RiwayatListAda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Get the intent and its data.
-        //Intent intent = getIntent();
         setContentView(R.layout.activity_riwayat);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Riwayat Bacaan");
         RecyclerView mRecyclerView = findViewById(R.id.recyclerView_riwayat);
-        RiwayatRoomDatabase database = Room.databaseBuilder(getApplicationContext(), RiwayatRoomDatabase
+        riwayatdatabase = Room.databaseBuilder(getApplicationContext(), RiwayatRoomDatabase
                 .class, "riwayat_database").allowMainThreadQueries().build();
 
-        daftarRiwayat = new ArrayList<>(database.riwayatDao().getAllRiwayat());
+        daftarRiwayat = new ArrayList<>(riwayatdatabase.riwayatDao().getAllRiwayat());
         LinearLayoutManager mLayoutManager;
         mLayoutManager=new LinearLayoutManager(this);
-
         mRecyclerView.setLayoutManager(mLayoutManager);
+
+        TextView emptyView;
+        emptyView=findViewById(R.id.empty_view);
+
         mAdapter=new RiwayatListAdapter(daftarRiwayat, RiwayatActivity.this);
         mAdapter.notifyDataSetChanged();
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnItemClickCallback(this::onItemClicked);
+        mAdapter.setOnItemClickCallback(this);
+
         mRecyclerView.setHasFixedSize(true);
 
-        /*ItemTouchHelper helper=new ItemTouchHelper(
-                new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT| ItemTouchHelper.RIGHT) {
-                    @Override
-                    public boolean onMove(@NonNull RecyclerView recyclerView,
-                                          @NonNull RecyclerView.ViewHolder viewHolder,
-                                          @NonNull RecyclerView.ViewHolder target) {
-                        return false;
-                    }
-
-                    @Override
-                    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                        int position=viewHolder.getBindingAdapterPosition();
-                        Riwayat swipeRiwayat=mAdapter.getRiwayatAtPosition(position);
-                        removeItem(swipeRiwayat);
-                    }
-                });helper.attachToRecyclerView(mRecyclerView);*/
-
+        if(daftarRiwayat.isEmpty()){
+            mRecyclerView.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
+        }
+        else{
+            mRecyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+        }
 
     }
 
@@ -73,22 +68,14 @@ public class RiwayatActivity extends AppCompatActivity implements RiwayatListAda
         return true;
     }
 
-    // The options menu has a single item "Clear all data now"
-    // that deletes all the entries in the database
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.clear_data) {
-            // Add a toast just for confirmation
             Toast.makeText(this, R.string.clear_data_toast_text, Toast.LENGTH_LONG).show();
-
-            // Delete the existing data
-           // daftarRiwayat=riwayatdatabase.riwayatDao().deleteAll();
+           riwayatdatabase.riwayatDao().deleteAllRiwayat(daftarRiwayat);
+            mAdapter.clear();
             return true;
         }
         return super.onOptionsItemSelected(item);

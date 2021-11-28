@@ -20,7 +20,6 @@ import com.example.projectpb.data.Riwayat;
 import com.example.projectpb.data.RiwayatRoomDatabase;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.ButterKnife;
 
@@ -57,7 +56,6 @@ public class RiwayatListAdapter extends RecyclerView.Adapter<RiwayatListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull RiwayatListAdapter.RiwayatViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        final String getKey=daftarRiwayat.get(position).getmKey();
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -67,11 +65,9 @@ public class RiwayatListAdapter extends RecyclerView.Adapter<RiwayatListAdapter.
                         .setItems(menuPilihan, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                            switch (which){
-                                case 0:
-                                    onDeleteData(position);
-                                    break;
-                            }
+                        if (which == 0) {
+                            onDeleteData(position);
+                        }
                         }
                 });
                 dialog.create();
@@ -79,7 +75,6 @@ public class RiwayatListAdapter extends RecyclerView.Adapter<RiwayatListAdapter.
                 return true;
             }
         });
-
         holder.bind(daftarRiwayat.get(position));
         holder.itemView.setOnClickListener(v -> onItemClickCallback.onItemClicked(daftarRiwayat.get(holder.getBindingAdapterPosition())));
     }
@@ -106,7 +101,6 @@ public class RiwayatListAdapter extends RecyclerView.Adapter<RiwayatListAdapter.
             judul = itemView.findViewById(R.id.title_riwayat);
             gambar = itemView.findViewById(R.id.gbr_riwayat);
             ButterKnife.bind(this,itemView);
-
             itemView.setOnClickListener(v -> getBindingAdapterPosition());
         }
 
@@ -124,6 +118,16 @@ public class RiwayatListAdapter extends RecyclerView.Adapter<RiwayatListAdapter.
     void setRiwayat(ArrayList<Riwayat> riwayat) {
         daftarRiwayat = riwayat;
         notifyDataSetChanged();
+    }
+
+    public void clear() {
+        int size = this.daftarRiwayat.size();
+        if (size > 0) {
+            for (int i = 0; i < size; i++) {
+                daftarRiwayat.remove(0);
+            }
+            this.notifyItemRangeRemoved(0, size);
+        }
     }
 
     public interface OnItemClickCallback {

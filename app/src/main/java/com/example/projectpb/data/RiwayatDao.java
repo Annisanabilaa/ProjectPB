@@ -14,11 +14,11 @@ public interface RiwayatDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insertRiwayat(Riwayat riwayat);
 
-    @Query("SELECT * from tabel_riwayat ORDER BY `key`ASC")
+    @Query("SELECT * FROM tabel_riwayat")
     List<Riwayat> getAllRiwayat();
 
-    @Query("DELETE FROM tabel_riwayat")
-    void deleteAll();
+    @Delete
+    void deleteAllRiwayat(List<Riwayat> riwayat);
 
     @Delete
     void deleteRiwayat(Riwayat riwayat);

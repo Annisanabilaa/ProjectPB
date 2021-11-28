@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.projectpb.data.Result;
 import com.example.projectpb.data.Riwayat;
 import com.example.projectpb.data.RiwayatRoomDatabase;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements MasakanAdapter.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //getSupportActionBar().setDisplayShowTitleEnabled(false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
         LinearLayoutManager mLayoutManager;
@@ -78,6 +79,35 @@ public class MainActivity extends AppCompatActivity implements MasakanAdapter.On
                 RiwayatRoomDatabase.class,
                 "riwayat_database") //Nama File Database yang akan disimpan
                 .build();
+
+        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView.scrollToPosition(0);
+                recyclerView.smoothScrollToPosition(0);
+            }
+        });
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
+        {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy)
+            {
+                if (dy > 0 ||dy<0 && fab.isShown())
+                {
+                    fab.hide();
+                }
+            }
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState)
+            {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE)
+                {
+                    fab.show();
+                }
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
     }
 
     @Override
@@ -249,18 +279,6 @@ public class MainActivity extends AppCompatActivity implements MasakanAdapter.On
         }.execute();
     }
 
-    /*public void setFloatingActionButton(final View view) {
-        float actionButton = (android.support.design.widget.FloatingActionButton)
-                getActivity().findViewById(R.id.float);
-        actionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LinearLayoutManager layoutManager = (LinearLayoutManager) mRecyclerView
-                        .getLayoutManager();
-                layoutManager.scrollToPositionWithOffset(0, 0);
-            }
-        });
-    }*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Check if the correct item was clicked.
@@ -281,11 +299,7 @@ public class MainActivity extends AppCompatActivity implements MasakanAdapter.On
                     } else {
                         AppCompatDelegate.setDefaultNightMode
                                 (AppCompatDelegate.MODE_NIGHT_YES);
-//                        DropdownTextView.Builder desc;
-//                        desc = new DropdownTextView.Builder(this);
-//                        desc.setTitleTextColorRes(R.color.white);
                     }
-                    // Recreate the activity for the theme change to take effect.
                     recreate();
                 }
                 return true;

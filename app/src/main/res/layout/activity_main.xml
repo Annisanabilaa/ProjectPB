@@ -24,6 +24,9 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
+            app:backgroundTint="@color/Cedar_chest"
+            app:fabSize="auto"
+            android:visibility="gone"
             android:clickable="true"
             app:srcCompat="@drawable/ic_baseline_keyboard_arrow_up_24"
             tools:ignore="SpeakableTextPresentCheck" />

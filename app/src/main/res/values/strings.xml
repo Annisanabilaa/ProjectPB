@@ -65,5 +65,6 @@ Sajikan juga berbagai camilan lainnya seperti jalangkote khas Makassar ataupun r
     <string name="day_mode">Day Mode</string>
     <string name="clear_all_data">Hapus Semua Riwayat</string>
     <string name="clear_data_toast_text">Semua Riwayat Dihapus</string>
+    <string name="default_riwayat">Riwayat Bacaan Belum Ada</string>
 
 </resources>

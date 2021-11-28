@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <ImageView
-            android:id="@+id/gbr_makanan"
+            android:id="@+id/gbr_riwayat"
             android:layout_width="match_parent"
             android:layout_height="215dp"
             android:layout_marginStart="4dp"
@@ -37,7 +37,7 @@
             android:scaleType="fitXY" />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/title_riwayat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"

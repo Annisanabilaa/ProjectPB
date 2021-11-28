@@ -2,22 +2,27 @@ package com.example.projectpb;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.projectpb.data.Result;
+import com.example.projectpb.data.Riwayat;
+import com.example.projectpb.data.RiwayatRoomDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements MasakanAdapter.On
     private MasakanAdapter mAdapter;
     private boolean loading = true;
     int pastVisiblesItems, visibleItemCount, totalItemCount;
+    private RiwayatRoomDatabase database;
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
@@ -37,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements MasakanAdapter.On
         setContentView(R.layout.activity_main);
         //getSupportActionBar().setDisplayShowTitleEnabled(false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
+
         LinearLayoutManager mLayoutManager;
         mLayoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -49,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements MasakanAdapter.On
         //infinitescroll
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener(){
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 if (dy > 0) { //check for scroll down
                     visibleItemCount = mLayoutManager.getChildCount();
                     totalItemCount = 1;
@@ -66,6 +73,11 @@ public class MainActivity extends AppCompatActivity implements MasakanAdapter.On
                 }
             }
         });
+        database = Room.databaseBuilder(
+                getApplicationContext(),
+                RiwayatRoomDatabase.class,
+                "riwayat_database") //Nama File Database yang akan disimpan
+                .build();
     }
 
     @Override
@@ -216,10 +228,25 @@ public class MainActivity extends AppCompatActivity implements MasakanAdapter.On
     public void onItemClicked(Result data) {
             String key = data.getKey();
             String thumb = data.getThumb();
+            String title=data.getTitle();
             Intent intent = new Intent(MainActivity.this, DetailActivity.class);
             intent.putExtra("key", key);
             intent.putExtra("thumb", thumb);
+
+            Riwayat dataRiwayat=new Riwayat(key,title,thumb);
+            insertData(dataRiwayat);
             startActivity(intent);
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private void insertData(final Riwayat riwayat){
+        new AsyncTask<Void, Void, Long>() {
+            @Override
+            protected Long doInBackground(Void... voids) {
+                //Menjalankan proses insert data
+                return database.riwayatDao().insertRiwayat(riwayat);
+            }
+        }.execute();
     }
 
     /*public void setFloatingActionButton(final View view) {

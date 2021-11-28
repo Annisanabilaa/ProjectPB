@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements MasakanAdapter.On
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
         MenuItem menuItem = menu.findItem(R.id.search);
-
+        int nightMode = AppCompatDelegate.getDefaultNightMode();
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setQueryHint("Cari Resep...");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -104,9 +104,14 @@ public class MainActivity extends AppCompatActivity implements MasakanAdapter.On
                 return false;
             }
         });
-        return super.onCreateOptionsMenu(menu);
+        //return super.onCreateOptionsMenu(menu);
+        if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
+            menu.findItem(R.id.night_mode).setTitle(R.string.day_mode);
+        } else {
+            menu.findItem(R.id.night_mode).setTitle(R.string.night_mode);
+        }
+        return true;
     }
-
 
     private void getResult() {
         final ArrayList<Result> listResult = new ArrayList<>();
@@ -229,5 +234,37 @@ public class MainActivity extends AppCompatActivity implements MasakanAdapter.On
             }
         });
     }*/
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Check if the correct item was clicked.
+        switch (item.getItemId()) {
+            case R.id.riwayat:
+                Intent intent = new Intent(MainActivity.this, RiwayatActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.night_mode:
+                if (item.getItemId() == R.id.night_mode) {
+                    // Get the night mode state of the app.
+                    int nightMode = AppCompatDelegate.getDefaultNightMode();
+                    // Set the theme mode for the restarted activity.
+                    if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
+                        AppCompatDelegate.setDefaultNightMode
+                                (AppCompatDelegate.MODE_NIGHT_NO);
+
+                    } else {
+                        AppCompatDelegate.setDefaultNightMode
+                                (AppCompatDelegate.MODE_NIGHT_YES);
+//                        DropdownTextView.Builder desc;
+//                        desc = new DropdownTextView.Builder(this);
+//                        desc.setTitleTextColorRes(R.color.white);
+                    }
+                    // Recreate the activity for the theme change to take effect.
+                    recreate();
+                }
+                return true;
+        }
+
+        return false;
+    }
 
 }
